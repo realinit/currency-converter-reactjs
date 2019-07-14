@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from '../reducers/index';
-import { persistStore,autoRehydrate } from 'redux-persist';
+import { persistStore } from 'redux-persist';
 const middlewares = [];
 
 middlewares.push(thunkMiddleware);

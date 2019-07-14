@@ -1,31 +1,56 @@
+import { SAVE_CURRENCY_DATA, 
+        CURRENCY_LIST, 
+        REMOVE_CURRENCY,
+        SAVE_CURRENT_INPUT 
+    } from './../constant/actionConstant';
+const defaultSate = {
+    fetching:false,
+    currenyList:['INR'],
+    lastUpdate:'',
+    userInputValue:1
+}
 
 
-const todos = (state = false, action) => {
+const converter = (state = defaultSate, action) => {
+    switch (action.type) {
+        case "FETCHING":
+            return {
+                ...state,
+                fetching:true
+            }
 
-    console.log(action);
-
-  switch (action.type) {
-    case "ADD_TODO":
-      return [
-         ...state,
-         {
-           text: action.text,
-           completed: false
-         }
-       ]
-    case "DELETE_TODO": {
-         const newState = Object.assign([], state);
-          console.log("del>>>>>>>>>>>>>>>>>>>>>",action.text.todo.text.username);
-         const indexOfDelete = state.findIndex(del => {
-
-           return del.text.username == action.text.todo.text.username
-         })
-         newState.splice(indexOfDelete, 1);
-         return newState;
-       }
-    default:
-      return state;
-  }
+        case SAVE_CURRENCY_DATA : 
+            return {
+                ...state,
+                fetching:false,
+                rates: {
+                    ...state.rates,
+                    ...action.payload.rates
+                },
+                lastUpdate:action.payload.date
+            }
+        case CURRENCY_LIST : 
+            return {
+                ...state,
+                currenyList:[
+                    ...state.currenyList,
+                    action.payload
+                ]            
+            }
+        case REMOVE_CURRENCY : 
+            return {
+                ...state,
+                currenyList:action.payload            
+            }
+        case SAVE_CURRENT_INPUT : 
+            return {
+                ...state,
+                userInputValue:action.payload            
+            }
+                 
+        default:
+            return state;
+    }
 };
 
-export default todos;
+export default converter;

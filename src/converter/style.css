@@ -1,0 +1,41 @@
+.center{
+    text-align:center
+}
+.dIB {
+    display:inline-block;
+}
+.W100{
+    width:100%
+}
+.W600p{
+    width:600px
+}
+.pull-left{
+    float:left
+}
+.pull-right{
+    float:right
+}
+.row{
+    margin:0
+}
+.main-container {
+    padding: 60px 20px;
+    background: #c9dae0;
+}
+.currencyRemoveButton{
+    position:absolute;
+    right:-8px;
+    width:20px;
+    height:20px;
+    background:red;
+    color:#fff;
+    line-height: normal;
+    border-radius:40px;
+    cursor:pointer
+
+
+}
+.list-group, .input-group{
+    margin-bottom:20px  
+}
